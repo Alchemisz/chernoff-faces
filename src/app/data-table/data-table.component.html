@@ -1,1 +1,22 @@
-<p>data-table works!</p>
+<div class="mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Rok</th>
+        <th scope="col">Przestępstwa stwierdzone</th>
+        <th scope="col">W tym czyny karalne nieletnich</th>
+        <th scope="col">Podejrzani ogółem</th>
+        <th scope="col">W tym nieletni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of dataRows;">
+        <td>{{row.year}}</td>
+        <td>{{row.crimesConfirmed}}</td>
+        <td>{{row.percentParticipationOfMinors}}</td>
+        <td>{{row.totalSuspects}}</td>
+        <td>{{row.totalSuspectsPercentParticipationOfMinors}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

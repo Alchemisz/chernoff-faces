@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CsvReaderComponent } from './csv-reader/csv-reader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DataStatisticComponent } from './data-statistic/data-statistic.component';
@@ -14,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CsvReaderComponent,
     DataTableComponent,
     DataStatisticComponent,
     DataPlotsComponent,

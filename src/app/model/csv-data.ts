@@ -1,4 +1,4 @@
-export class CsvData {
+export class CsvDataRow {
   year: number;
   crimesConfirmed: number;
   percentParticipationOfMinors: number;

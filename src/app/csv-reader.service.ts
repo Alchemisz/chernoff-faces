@@ -1,38 +1,39 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { CsvData } from './csv-data';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { CsvDataRow } from './model/csv-data';
 
-@Component({
-  selector: 'app-csv-reader',
-  templateUrl: './csv-reader.component.html',
-  styleUrls: ['./csv-reader.component.css'],
+@Injectable({
+  providedIn: 'root',
 })
-export class CsvReaderComponent implements OnInit {
-  public csvData: CsvData[] = [];
+export class CsvReaderService {
+  dataRows = new Subject<CsvDataRow[]>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+  getCsvData() {
     this.http.get('assets/statystyka.csv', { responseType: 'text' }).subscribe(
       (data) => {
         let csvToRowArray = data.split('\n');
+        let csvData = [];
         for (let index = 1; index < csvToRowArray.length - 1; index++) {
           let row = csvToRowArray[index].split(',');
-          this.csvData.push(
-            new CsvData(
+          csvData.push(
+            new CsvDataRow(
               parseInt(row[0], 10),
               parseInt(row[1], 10),
               parseInt(row[2], 10),
-              parseInt(row[3], 10),
-              parseInt(row[4], 10)
+              parseInt(row[4], 10),
+              parseInt(row[5], 10)
             )
           );
         }
-        console.log(this.csvData);
+        console.log(csvData);
+        this.dataRows.next(csvData);
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
-  ngOnInit(): void {}
 }
