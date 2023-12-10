@@ -43,10 +43,10 @@ export class CsvReaderService {
       dataSet[4].push(parseInt(row[5]));
     }
 
-    let dataAttributeQuantiles: AttributeQuantiles[] = [];
+    let calculatedDataAttributeQuantiles: AttributeQuantiles[] = [];
 
     for (let i = 0; i < 5; i++) {
-      dataAttributeQuantiles.push(
+      calculatedDataAttributeQuantiles.push(
         new AttributeQuantiles(
           quantile(dataSet[i], 0.25),
           quantile(dataSet[i], 0.5),
@@ -54,7 +54,8 @@ export class CsvReaderService {
         )
       );
     }
-    console.log(dataAttributeQuantiles);
+    console.log(calculatedDataAttributeQuantiles);
+    this.dataAttributeQuantiles.next(calculatedDataAttributeQuantiles);
   }
 
   private readData(csvToRowArray: string[]) {

@@ -1,0 +1,42 @@
+.dot {
+    height: 400px;
+    background-color: #e7db6c;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .q1-width {
+    width: 350px;
+  }
+
+  .q2-width {
+    width: 400px;
+  }
+
+  .q3-width {
+    width: 450px;
+  }
+
+  .q4-width {
+    width: 500px;
+  }
+
+  .q1-background {
+    background-color: #d6d325;
+    border: black 1px solid;
+  }
+
+  .q2-background {
+    background-color: #ece2be;
+    border: black 1px solid;
+  }
+
+  .q3-background {
+    background-color: #9e3d2c;
+    border: black 1px solid;
+  }
+
+  .q4-background {
+    background-color: 	#260701;
+    border: black 1px solid;
+  }
