@@ -5,7 +5,7 @@
       {{year}}
     </option>
   </select>
-  <div class="mt-4 col-12 d-flex justify-content-center">
+  <div *ngIf="showFace" class="mt-4 col-12 d-flex justify-content-center">
     <div class="dot" [ngClass]="{
       'q1-width': crimesConfirmedQuantileType === quantileType.FIRST,
       'q2-width': crimesConfirmedQuantileType === quantileType.SECOND,
@@ -15,6 +15,34 @@
       'q2-background': percentParticipationOfMinorsQuantileType === quantileType.SECOND,
       'q3-background': percentParticipationOfMinorsQuantileType === quantileType.THIRD,
       'q4-background': percentParticipationOfMinorsQuantileType === quantileType.FOURTH
-      }"></div>
+      }">
+
+      <div class="eye-1">
+      </div>
+
+      <div class="eye-2">
+      </div>
+
+      <div class="mouth" [ngClass]="{
+        'q1-mouth': totalSuspectsQuantileType === quantileType.FIRST,
+        'q2-mouth': totalSuspectsQuantileType === quantileType.SECOND,
+        'q3-mouth': totalSuspectsQuantileType === quantileType.THIRD,
+        'q4-mouth': totalSuspectsQuantileType === quantileType.FOURTH
+      }">
+      </div>
+
+      <div class="hat">
+      </div>
+
+
+      <div class="scar" [ngClass]="{
+        'q1-scar': totalSuspectsQuantileType === quantileType.FIRST,
+        'q2-scar': totalSuspectsQuantileType === quantileType.SECOND,
+        'q3-scar': totalSuspectsQuantileType === quantileType.THIRD,
+        'q4-scar': totalSuspectsQuantileType === quantileType.FOURTH
+      }">
+      </div>
+
+    </div>
   </div>
 </div>

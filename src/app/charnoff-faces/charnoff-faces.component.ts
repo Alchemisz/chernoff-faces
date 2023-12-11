@@ -12,6 +12,7 @@ import { CsvDataRow } from '../model/csv-data';
 })
 export class CharnoffFacesComponent implements OnInit, OnDestroy {
   quantileType = QUANTILE_TYPE;
+  showFace: boolean = false;
 
   dataRowsSubscryption!: Subscription;
   dataRows: CsvDataRow[] = [];
@@ -45,6 +46,7 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
   }
 
   onYearSelected(year: string) {
+    this.showFace = true;
     console.log(this.dataRowByYear.get(parseInt(year)));
     let dataRow = this.dataRowByYear.get(parseInt(year)) as CsvDataRow;
     this.calculateQuantiles(dataRow);
