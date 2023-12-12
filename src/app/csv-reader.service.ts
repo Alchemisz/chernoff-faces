@@ -9,6 +9,7 @@ import { AttributeQuantiles } from './model/attribute-quantiles';
 })
 export class CsvReaderService {
   dataRows = new Subject<CsvDataRow[]>();
+  avgValues = new Subject<CsvDataRow>();
   dataAttributeQuantiles = new Subject<AttributeQuantiles[]>();
 
   constructor(private http: HttpClient) {}
@@ -30,7 +31,7 @@ export class CsvReaderService {
     var quantile = require('compute-quantile');
     let dataSet: number[][] = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       dataSet[i] = [];
     }
 
@@ -41,11 +42,25 @@ export class CsvReaderService {
       dataSet[2].push(parseInt(row[2]));
       dataSet[3].push(parseInt(row[4]));
       dataSet[4].push(parseInt(row[5]));
+      dataSet[5].push(parseFloat(row[7]));
     }
+
+    const calculateAverage = (arr: number[]): number =>
+      arr.reduce((acc, val) => acc + val, 0) / arr.length;
+    const roundNum = (num: number) => Math.round(num * 100) / 100;
+    let avgValues = new CsvDataRow(
+      -1,
+      roundNum(calculateAverage(dataSet[1])),
+      roundNum(calculateAverage(dataSet[2])),
+      roundNum(calculateAverage(dataSet[3])),
+      roundNum(calculateAverage(dataSet[4])),
+      roundNum(calculateAverage(dataSet[5]))
+    );
+    this.avgValues.next(avgValues);
 
     let calculatedDataAttributeQuantiles: AttributeQuantiles[] = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       calculatedDataAttributeQuantiles.push(
         new AttributeQuantiles(
           quantile(dataSet[i], 0.25),
@@ -68,7 +83,8 @@ export class CsvReaderService {
           parseInt(row[1], 10),
           parseInt(row[2], 10),
           parseInt(row[4], 10),
-          parseInt(row[5], 10)
+          parseInt(row[5], 10),
+          parseFloat(row[7])
         )
       );
     }

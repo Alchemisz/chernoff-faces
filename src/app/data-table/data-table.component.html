@@ -7,15 +7,25 @@
         <th scope="col">W tym czyny karalne nieletnich</th>
         <th scope="col">Podejrzani ogółem</th>
         <th scope="col">W tym nieletni</th>
+        <th scope="col">Podejrzani ogółem - procent mężczyzn</th>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><b>Wartości średnie:</b></td>
+        <td>{{avgValues.crimesConfirmed}}</td>
+        <td>{{avgValues.percentParticipationOfMinors}}</td>
+        <td>{{avgValues.totalSuspects}}</td>
+        <td>{{avgValues.totalSuspectsPercentParticipationOfMinors}}</td>
+        <td>{{avgValues.totalSuspectsPercentOfMan}}</td>
+      </tr>
       <tr *ngFor="let row of dataRows;">
         <td>{{row.year}}</td>
         <td>{{row.crimesConfirmed}}</td>
         <td>{{row.percentParticipationOfMinors}}</td>
         <td>{{row.totalSuspects}}</td>
         <td>{{row.totalSuspectsPercentParticipationOfMinors}}</td>
+        <td>{{row.totalSuspectsPercentOfMan}}</td>
       </tr>
     </tbody>
   </table>

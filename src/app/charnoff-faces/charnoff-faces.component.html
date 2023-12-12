@@ -4,6 +4,9 @@
     <option *ngFor="let year of dataRowByYear.keys();">
       {{year}}
     </option>
+    <option>
+      Średnia
+    </option>
   </select>
   <div *ngIf="showFace" class="mt-4 col-12 d-flex justify-content-center">
     <div class="dot" [ngClass]="{
@@ -40,6 +43,14 @@
         'q2-scar': totalSuspectsQuantileType === quantileType.SECOND,
         'q3-scar': totalSuspectsQuantileType === quantileType.THIRD,
         'q4-scar': totalSuspectsQuantileType === quantileType.FOURTH
+      }">
+      </div>
+
+      <div class="nose" [ngClass]="{
+        'q1-nose': totalSuspectsPercentOfManQuantileType === quantileType.FIRST,
+        'q2-nose': totalSuspectsPercentOfManQuantileType === quantileType.SECOND,
+        'q3-nose': totalSuspectsPercentOfManQuantileType === quantileType.THIRD,
+        'q4-nose': totalSuspectsPercentOfManQuantileType === quantileType.FOURTH
       }">
       </div>
 

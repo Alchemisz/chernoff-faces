@@ -100,8 +100,6 @@
   }
 
   .hat {
-    margin-left: auto;
-    margin-right: auto;
     position: absolute;
     z-index: 3;
     width: 70%;
@@ -139,4 +137,32 @@
   .q1-scar {
     left: 50%;
     top: 85%;
+  }
+
+  .nose {
+    position: absolute;
+    z-index: 5;
+    left: 42%;
+    top: 46%;
+    width: 40px;
+    height: 40px;
+    transform: rotateY(0deg) rotate(45deg); 
+    display: inline-block;
+    border: black 2px solid;
+  }
+
+  .q1-nose{
+    border-radius: 20%;
+  }
+
+  .q2-nose{
+    border-radius: 30%;
+  }
+
+  .q3-nose{
+    border-radius: 40%;
+  }
+
+  .q4-nose{
+    border-radius: 50%;
   }

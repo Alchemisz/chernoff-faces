@@ -1,1 +1,44 @@
-<p>data-statistic works!</p>
+<div class="mt-4">
+  <p><b>Przestępstwa stwierdzone</b></p>
+  <p>
+    Kwantyl 1: {{dataAttributeQuantiles[1].quantile1}}<br>
+    Kwantyl 2: {{dataAttributeQuantiles[1].quantile2}}<br>
+    Kwantyl 3: {{dataAttributeQuantiles[1].quantile3}}<br>
+    Wartość średnia: {{avgValues.crimesConfirmed}}<br>
+  </p>
+
+
+  <p><b>W tym czyny karalne nieletnich</b></p>
+  <p>
+    Kwantyl 1: {{dataAttributeQuantiles[2].quantile1}}<br>
+    Kwantyl 2: {{dataAttributeQuantiles[2].quantile2}}<br>
+    Kwantyl 3: {{dataAttributeQuantiles[2].quantile3}}<br>
+    Wartość średnia: {{avgValues.percentParticipationOfMinors}}<br>
+  </p>
+
+
+  <p><b>Podejrzani ogółem</b></p>
+  <p>
+    Kwantyl 1: {{dataAttributeQuantiles[3].quantile1}}<br>
+    Kwantyl 2: {{dataAttributeQuantiles[3].quantile2}}<br>
+    Kwantyl 3: {{dataAttributeQuantiles[3].quantile3}}<br>
+    Wartość średnia: {{avgValues.totalSuspects}}<br>
+  </p>
+
+  <p><b>W tym nieletni</b></p>
+  <p>
+    Kwantyl 1: {{dataAttributeQuantiles[4].quantile1}}<br>
+    Kwantyl 2: {{dataAttributeQuantiles[4].quantile2}}<br>
+    Kwantyl 3: {{dataAttributeQuantiles[4].quantile3}}<br>
+    Wartość średnia: {{avgValues.totalSuspectsPercentParticipationOfMinors}}<br>
+  </p>
+
+
+  <p><b>Podejrzani ogółem - procent mężczyzn</b></p>
+  <p>
+    Kwantyl 1: {{dataAttributeQuantiles[5].quantile1}}<br>
+    Kwantyl 2: {{dataAttributeQuantiles[5].quantile2}}<br>
+    Kwantyl 3: {{dataAttributeQuantiles[5].quantile3}}<br>
+    Wartość średnia: {{avgValues.totalSuspectsPercentOfMan}}<br>
+  </p>
+</div>

@@ -20,12 +20,16 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
   dataAttributeQuantilesSubscryption!: Subscription;
   dataAttributeQuantiles: AttributeQuantiles[] = [];
 
+  avgValuesSubscryption!: Subscription;
+  avgValues!: CsvDataRow;
+
   dataRowByYear: Map<Number, CsvDataRow> = new Map();
 
   crimesConfirmedQuantileType!: QUANTILE_TYPE;
   percentParticipationOfMinorsQuantileType!: QUANTILE_TYPE;
   totalSuspectsQuantileType!: QUANTILE_TYPE;
   totalSuspectsPercentParticipationOfMinorsQuantileType!: QUANTILE_TYPE;
+  totalSuspectsPercentOfManQuantileType!: QUANTILE_TYPE;
 
   constructor(private csvReader: CsvReaderService) {
     this.dataRowsSubscryption = this.csvReader.dataRows.subscribe((data) => {
@@ -38,6 +42,9 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
       this.csvReader.dataAttributeQuantiles.subscribe(
         (data) => (this.dataAttributeQuantiles = data)
       );
+    this.avgValuesSubscryption = this.csvReader.avgValues.subscribe(
+      (data) => (this.avgValues = data)
+    );
     this.csvReader.getCsvData();
   }
   ngOnDestroy(): void {
@@ -47,7 +54,11 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
 
   onYearSelected(year: string) {
     this.showFace = true;
-    console.log(this.dataRowByYear.get(parseInt(year)));
+
+    if (year === 'Średnia') {
+      this.calculateQuantiles(this.avgValues);
+      return;
+    }
     let dataRow = this.dataRowByYear.get(parseInt(year)) as CsvDataRow;
     this.calculateQuantiles(dataRow);
   }
@@ -63,6 +74,8 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
       this.dataAttributeQuantiles[3];
     let totalSuspectsPercentParticipationOfMinorsAttributeQuantiles: AttributeQuantiles =
       this.dataAttributeQuantiles[4];
+    let totalSuspectsPercentOfManAttributeQuantiles: AttributeQuantiles =
+      this.dataAttributeQuantiles[5];
 
     this.crimesConfirmedQuantileType = this.calculateQuantile(
       crimesConfirmedAttributeQuantiles,
@@ -81,6 +94,10 @@ export class CharnoffFacesComponent implements OnInit, OnDestroy {
         totalSuspectsPercentParticipationOfMinorsAttributeQuantiles,
         dataRow.totalSuspectsPercentParticipationOfMinors
       );
+    this.totalSuspectsPercentOfManQuantileType = this.calculateQuantile(
+      totalSuspectsPercentOfManAttributeQuantiles,
+      dataRow.totalSuspectsPercentOfMan
+    );
   }
 
   calculateQuantile(

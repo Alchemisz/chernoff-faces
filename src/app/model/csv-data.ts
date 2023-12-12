@@ -4,13 +4,15 @@ export class CsvDataRow {
   percentParticipationOfMinors: number;
   totalSuspects: number;
   totalSuspectsPercentParticipationOfMinors: number;
+  totalSuspectsPercentOfMan!: number;
 
   constructor(
     year: number,
     crimesConfirmed: number,
     percentParticipationOfMinors: number,
     totalSuspects: number,
-    totalSuspectsPercentParticipationOfMinors: number
+    totalSuspectsPercentParticipationOfMinors: number,
+    totalSuspectsPercentOfMan: number
   ) {
     this.year = year;
     this.crimesConfirmed = crimesConfirmed;
@@ -18,5 +20,6 @@ export class CsvDataRow {
     this.totalSuspects = totalSuspects;
     this.totalSuspectsPercentParticipationOfMinors =
       totalSuspectsPercentParticipationOfMinors;
+    this.totalSuspectsPercentOfMan = totalSuspectsPercentOfMan;
   }
 }
