@@ -11,6 +11,8 @@ export class CsvReaderService {
   dataRows = new Subject<CsvDataRow[]>();
   avgValues = new Subject<CsvDataRow>();
   dataAttributeQuantiles = new Subject<AttributeQuantiles[]>();
+  years = new Subject<number[]>();
+  totalSuspectsPercentOfMan = new Subject<number[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -44,6 +46,9 @@ export class CsvReaderService {
       dataSet[4].push(parseInt(row[5]));
       dataSet[5].push(parseFloat(row[7]));
     }
+
+    this.years.next(dataSet[0]);
+    this.totalSuspectsPercentOfMan.next(dataSet[5]);
 
     const calculateAverage = (arr: number[]): number =>
       arr.reduce((acc, val) => acc + val, 0) / arr.length;

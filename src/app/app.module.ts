@@ -9,6 +9,7 @@ import { DataStatisticComponent } from './data-statistic/data-statistic.componen
 import { DataPlotsComponent } from './data-plots/data-plots.component';
 import { CharnoffFacesComponent } from './charnoff-faces/charnoff-faces.component';
 import { HomeComponent } from './home/home.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { HomeComponent } from './home/home.component';
     CharnoffFacesComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgChartsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
